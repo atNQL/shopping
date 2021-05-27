@@ -1,0 +1,31 @@
+﻿@model List<Match>[]
+@{
+    ViewData["Title"] = "Show2";
+}
+
+<h2>Show2</h2>
+@{
+    int total = 0;
+}
+<table class="table table-bordered">
+    @for (int i = 0; i < Model.Length; i++)
+    {
+        <tr>
+            <th colspan="5">Vòng @(i + 1)</th>
+        </tr>
+        @foreach (Match item in Model[i])
+        {
+            total += 1;
+            <tr>
+                <td class="text-right">
+                    @item.HomeClubName <img width="50" src="/images/@item.HomeLogo" alt="@item.HomeClubName" />
+                </td>
+                <td><img width="50" src="/images/@item.AwayLogo" alt="@item.AwayClubName" /> @item.AwayClubName</td>
+                <td>@item.StadiumName</td>
+                <td>@item.Result</td>
+                <td>@item.Round</td>
+            </tr>
+        }
+    }
+</table>
+<b>@total</b>

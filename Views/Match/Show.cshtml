@@ -1,0 +1,32 @@
+﻿@model List<Match>
+@{
+    ViewData["Title"] = "Show";
+}
+<h2>Show</h2>
+@{ int total = 0;}
+<table class="table table-bordered">
+    @for (int i = 1; i <= 38; i++)
+    {
+        <tr>
+            <th colspan="5">Vòng @i</th>
+        </tr>
+        foreach (var item in Model)
+        {
+            total += 1;
+            if (item.Round == i)
+            {
+                <tr>
+                    <td class="text-right">
+                        @item.HomeClubName <img width="50" src="/images/@item.HomeLogo" alt="@item.HomeClubName" />
+                    </td>
+                    <td><img width="50" src="/images/@item.AwayLogo" alt="@item.AwayClubName" /> @item.AwayClubName</td>
+                    <td>@item.StadiumName</td>
+                    <td>@item.Result</td>
+                    <td>@item.Round</td>
+                </tr>
+                break;
+            }
+        }
+    }
+</table>
+<b>@total</b>
