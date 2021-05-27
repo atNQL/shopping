@@ -1,0 +1,42 @@
+﻿@model Member
+@{
+    ViewData["Title"] = "MemberInRole";
+}
+
+<h1>Member In Role</h1>
+<h2>Username: @Model.Username</h2>
+<p>Email: @Model.Email</p>
+<p>Gender: @(Model.Gender ? "Female" : "Male")</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Role Name</th>
+        <th>Checked</th>
+    </tr>
+    @foreach (Role item in Model.Roles)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>
+                @if (item.Checked)
+                {
+                    <input type="checkbox" checked="checked" class="chk" name="chk" value="@item.Id" />
+                }
+                else
+                {
+                    <input type="checkbox" class="chk" name="chk" value="@item.Id" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+<script type="text/javascript">
+    $('.chk').click(function () {
+        //alert();
+        var o = { 'RoleId': $(this).val(), 'MemberId': '@Model.Id' };
+        $.post('/member/memberinrole', o, function (d) {
+            //alert(d);
+        });
+    });
+</script>
+

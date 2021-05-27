@@ -1,0 +1,29 @@
+﻿@model List<Payment>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Add Payment</h1>
+
+<h2><a href="/payment/create">Add Payment</a></h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>
+                <a href="/payment/delete/@item.Id">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+

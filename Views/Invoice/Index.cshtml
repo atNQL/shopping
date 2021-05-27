@@ -1,0 +1,71 @@
+﻿@model Invoice
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Thong tin khach hang</h1>
+
+
+<form method="post">
+    <div class="form-group">
+        <label class="control-label col-md-2">Name</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" asp-for="MemberName" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Dia chi nhan hang</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" asp-for="Address" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">So dien thoai</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" asp-for="PhoneNumber" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">So dien thoai</label>
+        <div class="col-md-10">
+            <select name="paymethod">
+                @foreach (var item in ViewBag.Payments)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+
+        </div>
+    </div>
+
+    <button>Thanh Toan</button>
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+
+    @foreach (var item in ViewBag.Cart)
+    {
+        <tr>
+            <td></td>
+            <td>
+                <a href="/product/detail/@item.ProductId">@item.ProductName</a>
+
+            </td>
+            <td>@item.Price</td>
+            <td>
+                <label>@item.Quantity</label>
+            </td>
+        </tr>
+    }
+
+</table>
+

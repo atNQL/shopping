@@ -1,0 +1,12 @@
+﻿@model Member
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Thong tin khach hang</h1>
+
+<p>Username: @Model.Username</p>
+<p>Email: @Model.Email</p>
+<p>Gender: @(Model.Gender ? "Female" : "Male")</p>
+<p>Phone: @Model.PhoneNumber </p>
+<a class="btn btn-info" href="/auth/edit/@Model.Id">Edit</a>

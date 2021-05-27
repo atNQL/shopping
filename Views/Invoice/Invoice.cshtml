@@ -1,0 +1,47 @@
+﻿@model List<Invoice>
+@{
+    ViewData["Title"] = "Invoice";
+}
+
+
+<h2>Username: @ViewBag.Infor.Username</h2>
+<h2>Email: @ViewBag.Infor.Email</h2>
+@if (@ViewBag.Infor.Gender)
+{
+    <h2>Gender: Female</h2>
+}
+else
+{
+    <h2>Gender: Male</h2>
+}
+<div>
+    <h1>Don Hang Cua Ban</h1>
+</div>
+
+
+
+@foreach (var item in Model)
+{
+    <h5>Ten: @item.MemberName</h5>
+    <h5>Dia chi: @item.Address</h5>
+    <h5>Sdt: @item.PhoneNumber</h5>
+    <table class="table table-bordered">
+        <tr>
+            <th>Product name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        @foreach (var invoiceDetail in item.InvoiceDetail)
+        {
+            <tr>
+                <td>@invoiceDetail.ProductName</td>
+                <td>@invoiceDetail.Price</td>
+                <td>@invoiceDetail.Quantity</td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+

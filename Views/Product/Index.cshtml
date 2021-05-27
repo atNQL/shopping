@@ -1,0 +1,42 @@
+﻿@model List<Product>
+
+@addTagHelper *,ElectricalShop
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Products</h1>
+@if (User.IsInRole("Administrator"))
+{
+    <a href="/product/create" class="btn btn-primary"> Create </a>
+}
+
+
+<pagination size="@ViewBag.productPerPage" total="@ViewBag.total" url="/product/index/{0}" route-id=@ViewContext.RouteData.Values["id"]></pagination>
+<form method="post">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <a href="/product/detail/@item.Id">
+                    <img height="150" src="~/images/@item.ImageUrl" />
+                </a>
+                <h2><a style="text-align: center" href="/product/detail/@item.Id">@item.Name</a></h2>
+            </div>
+            @if (User.IsInRole("Administrator"))
+            {
+                <ul>
+                    <li> <a href="/product/edit/@item.Id"> Edit </a></li>
+                    <li class="del"> <a href="/product/delete/@item.Id"> Remove </a></li>
+                </ul>
+            }
+        }
+    </div>
+    <pagination size="@ViewBag.productPerPage" total="@ViewBag.total" url="/product/index/{0}" route-id=@ViewContext.RouteData.Values["id"]></pagination>
+</form>
+
+<script type="text/javascript">
+    $('.del').click(function () {
+        return confirm('Are you sure delete?');
+    });
+</script>

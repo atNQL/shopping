@@ -1,0 +1,30 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit @Model.Name</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <img src="~/images/@Model.ImageUrl" />
+
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <label class="control-label col-md-2">Name</label>
+        <div class="col-md-10">
+            <input class="form-control" type="text" asp-for="Name" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Image Url</label>
+        <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+        <div class="col-md-10"><input class="form-control" type="file" name="f" /></div>
+    </div>
+
+    <div>
+        <button>Save</button>
+    </div>
+</form>

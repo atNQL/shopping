@@ -1,0 +1,30 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h2>Result</h2>
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-4">
+        <a href="/product/detail/@item.Id">
+            <img height="150" src="~/images/@item.ImageUrl" />
+        </a>
+        <h2><a style="text-align: center" href="/product/detail/@item.Id">@item.Name</a></h2>
+        @if (User.IsInRole("Administrator"))
+        {
+            <ul>
+                <li> <a href="/product/edit/@item.Id"> Edit </a></li>
+                <li class="del"> <a href="/product/delete/@item.Id"> Remove </a></li>
+            </ul>
+        }
+    </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $('.del').click(function () {
+        return confirm('Are you sure delete?');
+    });
+</script>

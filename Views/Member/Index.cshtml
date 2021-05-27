@@ -1,0 +1,35 @@
+﻿@model List<Member>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Thong tin khach hang</h1>
+
+<a href="/member/addmembers">Add Members</a>
+<a href="/member/addrole">Add Roles</a>
+<table class="table table-bordered">
+    <tr>
+        <th>User name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Phone number</th>
+        <th>Role</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Username</td>
+            <td>@item.Email</td>
+            <td>@item.Gender</td>
+            <td>@item.PhoneNumber</td>
+            <td><a href="/member/memberinrole/@item.Id">Member In Role</a></td>
+            <td>
+                <a href="/member/delete/@item.Id">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+

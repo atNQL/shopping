@@ -1,0 +1,53 @@
+﻿@model List<Cart>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cart</h1>
+@if (Model.Count != 0)
+{
+    <form action="/" method="post">
+        <table class="table table-bordered">
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="/product/detail/@item.ProductId">@item.ProductName</a>
+
+                    </td>
+                    <td>@item.Price</td>
+                    <td>
+                        <label>@item.Quantity</label>
+                    </td>
+                    <td>
+                        <a href="/cart/delete/@item.ProductId">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <a class="btn btn-info" href="/invoice/">Tien hanh dat hang</a>
+    </form>
+
+}
+else
+{
+    <h2>Khong co san pham nao trong gio hang cua ban</h2>
+    <a href="/product/" class="btn btn-primary"> Them san pham vao gio hang </a>
+}
+
+
+
+
+

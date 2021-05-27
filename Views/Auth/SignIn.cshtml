@@ -1,0 +1,26 @@
+﻿@model SignInModel
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+<h1>Sign In</h1>
+<div asp-validation-summary="All"></div>
+<form method="post">
+    <div>
+        <label asp-for="Usr">Username</label>
+        <input type="text" asp-for="Usr" />
+    </div>
+    <div>
+        <label asp-for="Pwd">Password</label>
+        <input type="password" asp-for="Pwd" />
+
+    </div>
+    <div>
+        <label asp-for="Remember"></label>
+        <input type="checkbox" asp-for="Remember" />
+    </div>
+    <div>
+        <button>Sign In</button>
+    </div>
+</form>
+

@@ -1,0 +1,47 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="row">
+        <div class="col-6">
+            <div class="img-thumbnail">
+                <img width="100%" src="~/images/@Model.ImageUrl" />
+            </div>
+        </div>
+        <div class="col-6">
+            <h3>@Model.Name</h3>
+            <div>
+                @if (Model.Quantity > 0)
+                {
+                    <p>Con hang: @Model.Quantity</p>
+                }
+                else
+                {
+                    <p>Het hang</p>
+                }
+            </div>
+            <div>
+                <p>Gia ban: @Model.Price</p>
+            </div>
+            <div>
+                <p>
+                    So luong:
+                    <input style="text-align: center" type="number" value="1" name="quantity" min="1" />
+                </p>
+            </div>
+            <button>Add to cart</button>
+        </div>
+    </div>
+    <div>
+        <h2>Description</h2>
+        <p>@Model.Description</p>
+    </div>
+
+</form>
+
+
+
