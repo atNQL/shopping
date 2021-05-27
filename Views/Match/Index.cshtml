@@ -1,0 +1,31 @@
+﻿@model List<Match>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>Index</h2>
+
+<a href="/match/show">Show</a>
+<a href="/match/show2">Show 2</a>
+<a href="/match/show3">Show 3</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Home</th>
+        <th>Away</th>
+        <th>Stadium</th>
+        <th>Result</th>
+        <th>Round</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-right">
+                @item.HomeClubName <img width="50" src="/images/@item.HomeLogo" alt="@item.HomeClubName" />
+            </td>
+            <td><img width="50" src="/images/@item.AwayLogo" alt="@item.AwayClubName" /> @item.AwayClubName</td>
+            <td>@item.StadiumName</td>
+            <td>@item.Result</td>
+            <td>@item.Round</td>
+        </tr>
+    }
+</table>
