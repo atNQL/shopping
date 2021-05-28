@@ -17,6 +17,8 @@ namespace ElectricalShop
             CreateWebHostBuilder(args).Build().Run();
         }
 
+        // Adding comment from Helpers
+
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
