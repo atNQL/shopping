@@ -12,6 +12,7 @@ namespace ElectricalShop.Controllers
 {
     public class ProductController : BaseController
     {
+        // TODO...
         public IActionResult Index(int id = 1)
         {
             //return View(app.ProductRepo.GetProducts());
