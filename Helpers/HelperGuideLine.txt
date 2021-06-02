@@ -11,3 +11,6 @@ The next chapter below: 02 start
 - 2 aboves continuos numbers make u think about what?
 
 The fact that I commit this file as Troll 03 but actually It should be 02
+===================================
+This was change from GitHub editor.
+===================================
